@@ -1,85 +1,79 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="navbar navbar-light">
+            <div class="container-fluid">
+              <RouterLink to="/" class="nav-brand">
+                <img
+                  src="/src/assets/logo-66-blue.svg"
+                  alt="Logo página"
+                  height="40"
+                  class="d-inline-block align-text-top"
+                />
+              </RouterLink>
+              Prueba Desarrollador Front-End Vuejs
+            </div>
+          </nav>
+        </div>
+      </div>
     </div>
   </header>
-
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
+  <footer class="blue-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div
+            class="flex flex-col justify-between space-y-5 py-8 text-center lg:flex-row lg:space-y-0 lg:text-left"
+          >
+            <div
+              class="flex flex-col items-center space-x-0 space-y-4 text-center lg:flex-row lg:space-x-6 lg:space-y-0 lg:text-left"
+            >
+              <img
+                src="./assets/logo-66.svg"
+                width="200"
+                height="200"
+                alt="logo"
+                loading="lazy"
+                class="w-12"
+              />
+              <p class="text-title-03 font-bold">Fácil, rápido y económico</p>
+            </div>
+            <div>
+              <a
+                type="button"
+                theme="personas"
+                size="medium"
+                inverted="true"
+                aspect="button"
+                componentis="a"
+                href="https://transferencias.global66.com/signUp?utm_element=footer_cta_b2c-button"
+                target="_blank"
+                class="inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap border-2 text-center text-paragraph-01 font-semibold text-b2c-blue-dark bg-white hover:bg-b2c-blue-25 border-white hover:border-b2c-blue-25 py-4 px-8 md:py-5 md:px-8 rounded-full font-semibold"
+                ><!---->
+                Descarga la App
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <style scoped>
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.blue-bg {
+  background: rgb(31 73 182);
 }
 </style>
