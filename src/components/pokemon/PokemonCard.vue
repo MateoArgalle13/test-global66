@@ -1,84 +1,83 @@
 <template>
-  <div class="pokemon-card">
-    <router-link
-      :to="{ name: 'PokemonDetail', params: { name: pokemon.name } }"
-      class="pokemon-link"
-    >
-      <img :src="pokemon.sprites.front_default" :alt="pokemon.name" class="pokemon-image" />
-      <h3 class="pokemon-name">{{ pokemon.name }}</h3>
-    </router-link>
-    <Button
-      :variant="isFav ? 'favorite' : 'secondary'"
-      @click="toggleFavorite"
-      class="favorite-button"
-    >
-      {{ isFav ? '❤️ Favorito' : '🤍 Añadir' }}
-    </Button>
+  <div
+    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+  >
+    <span class="pokemon-name" @click="emit('card-click', pokemon)">
+      {{ capitalizeFirstLetter(pokemon.name) }}
+    </span>
+    <span class="favorite-icon" @click="emit('toggle-favorite', pokemon)">
+      <i class="bi" :class="favoriteIconClass"></i>
+    </span>
   </div>
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 import { useFavoritesStore } from '@/stores/favorites'
-import Button from '@/components/ui/Button.vue'
 
 const props = defineProps({
   pokemon: {
     type: Object,
     required: true,
   },
+  isFavoriteView: {
+    type: Boolean,
+    default: false,
+  },
 })
+
+const emit = defineEmits(['card-click', 'toggle-favorite'])
 
 const favoritesStore = useFavoritesStore()
 
-const isFav = computed(() => favoritesStore.isFavorite(props.pokemon.id))
-
-const toggleFavorite = () => {
-  favoritesStore.toggleFavorite(props.pokemon)
+const capitalizeFirstLetter = (string) => {
+  if (!string) return ''
+  return string.charAt(0).toUpperCase() + string.slice(1)
 }
+
+const favoriteIconClass = computed(() => {
+  if (props.isFavoriteView) {
+    return 'bi-x-circle-fill text-danger'
+  } else {
+    return favoritesStore.isFavorite(props.pokemon.id)
+      ? 'bi-star-fill text-warning'
+      : 'bi-star text-muted'
+  }
+})
 </script>
 
 <style scoped>
-.pokemon-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: var(--shadow-sm);
-  padding: var(--spacing-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
+.list-group-item {
+  border: 1px solid #e9ecef;
+  border-radius: 0.375rem;
+  margin-bottom: 8px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
-
-.pokemon-card:hover {
-  transform: translateY(-5px);
-}
-
-.pokemon-link {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  flex-grow: 1; /* Para que ocupe el espacio antes del botón */
-}
-
-.pokemon-image {
-  width: 96px; /* Tamaño estándar de sprites */
-  height: 96px;
-  margin-bottom: var(--spacing-sm);
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .pokemon-name {
-  text-transform: capitalize;
-  font-size: 1.1em;
-  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #343a40;
+}
+.pokemon-name:hover {
+  color: #0d6efd;
 }
 
-.favorite-button {
-  margin-top: auto; /* Empuja el botón hacia abajo */
-  width: 100%;
+.favorite-icon {
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 5px;
+  background: #f9f9f9;
+  height: 44px;
+  width: 44px;
+  text-align: center;
+  border-radius: 50%;
 }
 </style>
