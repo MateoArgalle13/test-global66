@@ -31,3 +31,55 @@ Mis decisiones buscan que la app maneje mucha información sin problemas, aplica
     Calidad de Código: ESLint y Prettier aseguran un código limpio y consistente.
 
     Principios SOLID: Sí, aplicamos principios SOLID, específicamente el Principio de Responsabilidad Única (SRP), al asegurar que cada componente y módulo tiene una tarea bien definida y única.
+
+Cómo Correr y Visualizar el Proyecto
+Para poner en marcha este proyecto en tu máquina local, sigue estos sencillos pasos:
+
+    Prerrequisitos
+    Asegúrate de tener Node.js (versión 18 o superior recomendada) y npm (o Yarn) instalados en tu sistema.
+
+    Pasos de Instalación y Ejecución
+    Clona el repositorio:
+    Abre tu terminal o línea de comandos y ejecuta:
+
+    Bash
+
+    git clone https://github.com/MateoArgalle13/test-global66.git
+    cd test-global66
+
+
+    Instala las dependencias:
+    Una vez dentro de la carpeta del proyecto, instala todas las dependencias necesarias. Puedes usar npm o yarn:
+
+    Bash
+
+    npm install
+    # o
+    yarn install
+    Ejecuta el proyecto en modo desarrollo:
+    Para iniciar el servidor de desarrollo y ver la aplicación en tu navegador, ejecuta:
+
+    npm run dev
+    # o
+    yarn dev
+    Esto usualmente iniciará la aplicación en http://localhost:5173/ (o un puerto similar). La URL exacta aparecerá en tu terminal.
+
+    Ejecuta las pruebas unitarias (opcional):
+    Si quieres correr las pruebas, usa:
+
+
+    npm run test
+    # o
+    yarn test
+
+
+    Compila para producción (opcional):
+    Si necesitas generar una versión optimizada de la aplicación para despliegue, ejecuta:
+
+    npm run build
+    # o
+    yarn build
+
+    Esto creará una carpeta dist/ con los archivos listos para producción.
+
+    ¡Y eso es todo! Con estos pasos, podrás tener el proyecto funcionando y explorarlo
