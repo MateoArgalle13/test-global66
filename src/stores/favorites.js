@@ -30,10 +30,7 @@ export const useFavoritesStore = defineStore('favorites', {
       }
     },
   },
-  // Configuración de persistencia para este store
   persist: {
-    enabled: true, // Habilita la persistencia
-    // storage: localStorage, // Por defecto usa localStorage, pero puedes especificarlo
-    // key: 'pokemon-favorites', // Nombre de la clave en localStorage, opcional
+    enabled: true,
   },
 })

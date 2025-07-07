@@ -1,4 +1,3 @@
-// src/composables/useClipboard.js
 import { ref } from 'vue'
 
 export function useClipboard() {

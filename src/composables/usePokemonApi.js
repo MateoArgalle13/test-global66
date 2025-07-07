@@ -1,4 +1,3 @@
-// src/composables/usePokemonApi.js
 import { ref } from 'vue'
 import * as pokeapiService from '@/services/pokeapi'
 
